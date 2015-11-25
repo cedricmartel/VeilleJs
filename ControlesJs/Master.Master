@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="fr.cedricmartel.ControlesJs.Master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <%--css global--%>
+    <link href="/Content/Master.css" rel="stylesheet" />
+
+    <%--jquery + jquery ui--%>
+    <script src="/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.11.4.js"></script>
+    <link href="/Content/themes/base/all.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <span class="menu">
+        <a href="/Default.aspx">Accueil</a>
+        <a href="/ClasseJs/Default.aspx">Utilisation d'une classe en js</a>
+    </span>
+    <div class="content">
+        <asp:ContentPlaceHolder ID="PageContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>
