@@ -1,11 +1,11 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="fr.cedricmartel.ControlesJs.Master" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="fr.cedricmartel.VeilleJs.Master" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Veille tech JS</title>
     <%--css global--%>
     <link href="/Content/Master.css" rel="stylesheet" />
 
@@ -13,17 +13,55 @@
     <script src="/Scripts/jquery-1.9.1.min.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.js"></script>
     <link href="/Content/themes/base/all.css" rel="stylesheet" />
+
+    <%--bootstrap--%>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link href="/Content/bootstrap.sandstone.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <span class="menu">
-        <a href="/Default.aspx">Accueil</a>
-        <a href="/ClasseJs/Default.aspx">Utilisation d'une classe en js</a>
-    </span>
-    <div class="content">
-        <asp:ContentPlaceHolder ID="PageContent" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
+    <%--menu--%>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Default.aspx">Veille JS</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown" id="menuBestPractice">
+                        <a href="#menuBestPractice" class="dropdown-toggle" data-toggle="dropdown">Best practices<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/ClasseJs/Default.aspx">Utilisation d'une classe en js</a></li>
+                            <li><a href="/ControllerJs/Default.aspx">Utilisation d'un controller en js</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="menuComposants">
+                        <a href="#menuComposants" class="dropdown-toggle" data-toggle="dropdown">Composants<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/BatchManager/Default.aspx">Creneau Manager</a></li>
+                            <li><a href="/CreneauxManager/Default.aspx">Batch Manager</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <form runat="server">
+        <div class="container">
+            <asp:ContentPlaceHolder ID="PageContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
 </body>
 </html>

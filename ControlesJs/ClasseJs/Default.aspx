@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="fr.cedricmartel.ControlesJs.ClasseJs.Default" MasterPageFile="~/Master.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="fr.cedricmartel.VeilleJs.ClasseJs.Default" MasterPageFile="~/Master.Master" %>
 
 <asp:Content ContentPlaceHolderID="HeadContent" runat="server">
     <%--définition de la classe--%>

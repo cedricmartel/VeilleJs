@@ -7,7 +7,7 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace fr.cedricmartel.VeilleJs.ClasseJs {
+namespace fr.cedricmartel.VeilleJs.CreneauxManager {
     
     
     public partial class Default {

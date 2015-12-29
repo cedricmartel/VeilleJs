@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace fr.cedricmartel.VeilleJs
+namespace fr.cedricmartel.VeilleJs.ControllerJs
 {
     public partial class Default : System.Web.UI.Page
     {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlesJs", "ControlesJs\ControlesJs.csproj", "{7525C474-FB87-4DE8-8527-B15999F49854}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeilleJs", "ControlesJs\VeilleJs.csproj", "{7525C474-FB87-4DE8-8527-B15999F49854}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,7 +7,7 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace fr.cedricmartel.ControlesJs {
+namespace fr.cedricmartel.VeilleJs {
     
     
     public partial class Default {

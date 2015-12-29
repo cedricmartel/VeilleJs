@@ -7,9 +7,18 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace fr.cedricmartel.VeilleJs.ClasseJs {
+namespace fr.cedricmartel.VeilleJs.ControllerJs {
     
     
     public partial class Default {
+        
+        /// <summary>
+        /// Contrôle TestBtn.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button TestBtn;
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="fr.cedricmartel.ControlesJs.Default" MasterPageFile="~/Master.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="fr.cedricmartel.VeilleJs.Default" MasterPageFile="~/Master.Master" %>
 
 <asp:Content ContentPlaceHolderID="PageContent" runat="server">
     
