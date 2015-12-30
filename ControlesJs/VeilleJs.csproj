@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BatchManager\BatchManager.js" />
+    <Content Include="BatchManager\Default.aspx" />
     <Content Include="ClasseJs\ClasseOccupation.js" />
     <Content Include="ClasseJs\Default.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -100,7 +101,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="ControllerJs\TestController.js" />
     <Content Include="ControllerJs\Default.aspx" />
-    <Content Include="CreneauxManager\CreneauxManager.js" />
+    <Content Include="CreneauxManager\CreneauxSelector.js" />
     <Content Include="CreneauxManager\Default.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -126,6 +127,13 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BatchManager\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BatchManager\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ClasseJs\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

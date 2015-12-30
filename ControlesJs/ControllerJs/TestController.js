@@ -5,7 +5,7 @@ var testController = new function() {
     // les données, initialisées avec les valeurs par défaut, et avec les commentaires associés
     that.data = {
         idBouton: null, // id du bouton qui va déclencher l'action de test
-        idLibelle: null // id du libelle permettant de 
+        idLibelle: null // id du libelle ou sera affiché les logs de l'action
     };
 
     // fonction d'initialisastion du controller
@@ -18,16 +18,17 @@ var testController = new function() {
             var bouton = $("#" + that.data.idBouton);
             bouton.click(function()
             {
-                that.action();
+                action();
                 return false;
             });
         }
     };
 
     // evenement click sur le bouton
-    that.action = function() {
+    function action() {
         var lblResultat = $("#" + that.data.idLibelle);
         var now = new Date();
+        // on affiche juste la date pour cet exemples
         lblResultat.append("<br/>" + now);
     };
 

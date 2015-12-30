@@ -22,10 +22,13 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="PageContent" runat="server">
-
-    <div class="">
+    Cette page présente un exemple d'utilisation de controlleur d'ihm client.<br/>
+    C'est assez simple ici, lors du chargement de la page, la methode init du controller est appellée, en passant en paramètres de la page (ex: données, id de controles server, ...). <br/>
+    Ici, cette methode ini va ajouter un déclencheur sur le bouton, mappant sur une méthode privée du controller. 
+    <hr />
+    <p>
         <asp:Button runat="server" ID="TestBtn" Text="test" CssClass="btn btn-primary btn-sm btn-lg" />
-    </div>
+    </p>
     <label id="resultat"></label>
 
 </asp:Content>

@@ -1,0 +1,15 @@
+﻿.batchBtn {
+    margin-top:5px;
+}
+.batchListTbl {
+    width: 100%;
+    border-top: 1px solid #A9C6DF;
+    border-right: 1px solid #A9C6DF;
+    border-left: 1px solid #A9C6DF;
+    margin-top:5px;
+}
+.batchListRow {
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: 1px solid #A9C6DF;
+}

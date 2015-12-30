@@ -1,6 +1,11 @@
 ﻿body {
     margin: 0;
+    font-weight: normal !important;
 }
+label {
+    font-weight: normal !important;
+}
+
 .menu {
     background-color: #9BCFF9;
     width: 100%;

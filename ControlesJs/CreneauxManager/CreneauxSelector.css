@@ -1,0 +1,26 @@
+﻿.creneauTable {
+    border: 1px solid lightgray;
+}
+.creneauSelector {
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px 6px 2px 6px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none !important;
+    user-select: none;
+}
+.creneauSelector:hover {
+    background-color: #FFE158;
+}
+.creneauSelected {
+    background-color: #51B6F1;
+}
+.creneauSelectedTemp {
+    background-color: #00FFFF !important;
+}
+.creneauUnselectable {
+    background-color: #D8D8D8 !important;
+}
