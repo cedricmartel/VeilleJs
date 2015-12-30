@@ -8,10 +8,10 @@
         // click sur le bouton get selection
         function getSelection() {
             var o = JSON.stringify($("#creneauGarde").creneau("getSelection"));
-            $("#selection").html(o);
+            $("#getSelectionResult").html(o);
         }
 
-        // click sur le bouton set selection
+        // click sur le bouton set selection : chargement de données prédéfinies dans le controle
         function setSelection() {
             $("#creneauGarde").creneau("setSelection", [
                 [7.5, 8.5],
@@ -36,6 +36,7 @@
         // initialisation controle 
         var savedData = null;
         $(function () {
+            // instanciation du controle 
             $("#creneauGarde").creneau({
                 heureDebut: 7.5,
                 peutSaisirMinute: false,
@@ -44,7 +45,10 @@
                     cssClass: "btn-xs btn-default"
                 },
                 events: {
-                    onChange: function () { console.log("selected: " + JSON.stringify($("#creneauGarde").creneau("getSelection"))); },
+                    onChange: function () {
+                        // log dans la console de chaque modif 
+                        console.log("selected: " + JSON.stringify($("#creneauGarde").creneau("getSelection")));
+                    },
                 },
             });
 
@@ -72,29 +76,27 @@
             });
         });
     </script>
-
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="PageContent" runat="server">
     <p>
-        Ce controle permet de saisie des plages d'heures, à la demie heure, sur une journée<br/>
+        Ce controle permet de saisir à la souris plusieurs plages d'heures, à la demie heure, sur une journée<br />
         Les créneaux sont modélisées par une liste de [début, fin], compté en nombre d'heures (7.5 = 7h30)
     </p>
     <hr />
     <div id="creneauGarde"></div>
     <hr />
-
     <p>
-        <button id='btnSelection' onclick="getSelection(); return false;" class="btn-sm btn-primary">Afficher sélection</button>
-        <label id='selection' />
+        <button onClick="window.getSelection(); return false;" class="btn-sm btn-primary">Afficher sélection</button>
+        <span id="getSelectionResult" ></span>
     </p>
     <p>
-        <button id='btnSetSelection' onclick="setSelection(); return false;" class="btn-sm btn-primary">Set sélection</button>
+        <button onClick="window.setSelection(); return false;" class="btn-sm btn-primary">Set sélection</button>
     </p>
     <p>
-        <button id='btnSave' class="btn-sm btn-primary">Sauvegarder sélection</button>
-        <button id='btnLoad' class="btn-sm btn-primary">Charger sélection</button>
-        <label id="saveInfo"></label>
+        <button id="btnSave" class="btn-sm btn-primary">Sauvegarder sélection</button>
+        <button id="btnLoad" class="btn-sm btn-primary">Charger sélection</button>
+        <span id="saveInfo"></span>
     </p>
     <p>
         <input type="text" id="frames" value="[[7.5, 19.5]]" />
