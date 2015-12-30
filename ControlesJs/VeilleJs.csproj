@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BatchManager\BatchManager.css" />
     <Content Include="BatchManager\BatchManager.js" />
     <Content Include="BatchManager\Default.aspx" />
     <Content Include="ClasseJs\ClasseOccupation.js" />
@@ -101,6 +102,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="ControllerJs\TestController.js" />
     <Content Include="ControllerJs\Default.aspx" />
+    <Content Include="CreneauxManager\CreneauxSelector.css" />
     <Content Include="CreneauxManager\CreneauxSelector.js" />
     <Content Include="CreneauxManager\Default.aspx" />
     <Content Include="Default.aspx" />
