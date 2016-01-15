@@ -23,26 +23,25 @@ function Occupation(p) {
     // fonctions private 
     
     // convertit une date dans un format heure minute affichable 
-    function getHeureMinutes(dte) {
+    function heureToString(dte) {
         if (!(dte instanceof Date))
-            return null;
-        return dte.getHours() + 'h' + (dte.getMinutes() == 0 ? '' : (':' + dte.getMinutes()));
+            return "null";
+        return dte + ""; // serialisation js par defaut
     }
-
 
     ////////////////////////////////////////////////////
     // fonctions public
     that.debutHeureMinutes = function () {
         if (that.data.debut == null)
-            return "//";
-        return getHeureMinutes(that.data.debut);
+            return "NULL";
+        return heureToString(that.data.debut);
     };
     that.finHeureMinutes = function () {
         if (that.data.fin == null)
-            return "//";
-        return getHeureMinutes(that.data.fin);
+            return "NULL";
+        return heureToString(that.data.fin);
     };
     that.libelle = function () {
-        return that.data.objet + ' ' + that.data.type + ' ' + that.debutHeureMinutes() + ' - ' + that.finHeureMinutes();
+        return that.data.objet + '<br/>type: ' + that.data.type + '<br/>début: ' + that.debutHeureMinutes() + '<br/>fin: ' + that.finHeureMinutes();
     };
 }

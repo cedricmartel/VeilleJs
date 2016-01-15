@@ -7,17 +7,26 @@
     <%--instanciation et utilisation de la classe--%>
     <script>
         $(function () {
+            
+            // exemple d'instanciation de la classe occupation
             var oc1 = new Occupation({
                 id: 123,
-                guid: "test",
                 objet: "objet test",
                 type: "type1",
                 nature: "nat",
                 debut: new Date()
             });
 
-            $("#test").html(JSON.stringify(oc1.data));
-            $("#test2").html(oc1.libelle());
+            $("#btnStringifyClassObject").click(function() {
+                $("#test1").html(JSON.stringify(oc1.data));
+                return false;
+            });
+            
+            
+            $("#btnTestMethodePublique").click(function() {
+                $("#test2").html(oc1.libelle());
+                return false;
+            });
         });
     </script>
 
@@ -28,8 +37,10 @@
     Le contenu de cette classe est sérialisé ci dessous, et la ligne suivante affiche le retour d'une de ses méthodes publiques.
 
     <hr />
-
-    <p id="test"></p>
+    <button id="btnStringifyClassObject" class="btn btn-primary btn-xs btn-lg" >Visualisation objet de la classe</button>
+    <p id="test1"></p>
+    <br/>
+    <button id="btnTestMethodePublique" class="btn btn-primary btn-xs btn-lg" >Appel d'une méthode publique de l'instance</button>
     <p id="test2"></p>
 
 </asp:Content>
