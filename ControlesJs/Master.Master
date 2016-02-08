@@ -54,6 +54,13 @@
                             <li><a href="/BatchManager/Default.aspx">Batch Manager</a></li>
                         </ul>
                     </li>
+                    
+                     <li class="dropdown" id="menuoptim">
+                        <a href="#menuoptim" class="dropdown-toggle" data-toggle="dropdown">Recherche Optimisées<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/CrossFilter/Default.aspx">Recherche position de service</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

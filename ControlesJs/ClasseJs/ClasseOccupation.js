@@ -44,4 +44,5 @@ function Occupation(p) {
     that.libelle = function () {
         return that.data.objet + '<br/>type: ' + that.data.type + '<br/>début: ' + that.debutHeureMinutes() + '<br/>fin: ' + that.finHeureMinutes();
     };
+
 }
