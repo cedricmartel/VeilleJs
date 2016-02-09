@@ -13,9 +13,11 @@
             testController.init({
                 // ici les valeur d'initialisation
                 idBouton: "<%=TestBtn.ClientID%>", // ex pour passer l'id d'un controle serveur
-                idLibelle: "resultat"
+                idLibelle: "resultat",
+                donnees: [1, 2, 5, 7, 9],
+                bouttonId: "<%=BtnTest.ClientID%>"
                 // on peut aussi passer des textes ou des données...
-            });
+        });
         });
     </script>
 
@@ -28,6 +30,7 @@
     <hr />
     <p>
         <asp:Button runat="server" ID="TestBtn" Text="test" CssClass="btn btn-primary btn-sm btn-lg" />
+        <asp:Button runat="server" ID="BtnTest" Text="valide" CssClass="btn btn-success btn-sm btn-lg" />
     </p>
     <label id="resultat"></label>
 

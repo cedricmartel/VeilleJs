@@ -15,7 +15,8 @@
                 type: "type1",
                 nature: "nat",
                 debut: new Date()
-            });
+            });    
+
 
             $("#btnStringifyClassObject").click(function() {
                 $("#test1").html(JSON.stringify(oc1.data));
@@ -24,7 +25,7 @@
             
             
             $("#btnTestMethodePublique").click(function() {
-                $("#test2").html(oc1.libelle());
+                $("#test2").html(oc1.libelle);
                 return false;
             });
         });

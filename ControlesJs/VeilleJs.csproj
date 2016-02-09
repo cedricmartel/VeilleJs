@@ -105,6 +105,10 @@
     <Content Include="CreneauxManager\CreneauxSelector.css" />
     <Content Include="CreneauxManager\CreneauxSelector.js" />
     <Content Include="CreneauxManager\Default.aspx" />
+    <Content Include="CrossFilter\crossfilter.js" />
+    <Content Include="CrossFilter\Default.aspx" />
+    <Content Include="CrossFilter\loader.gif" />
+    <Content Include="CrossFilter\PositionsService.js" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
@@ -155,6 +159,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CreneauxManager\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CrossFilter\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CrossFilter\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
