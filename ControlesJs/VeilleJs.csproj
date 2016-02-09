@@ -108,7 +108,6 @@
     <Content Include="CrossFilter\crossfilter.js" />
     <Content Include="CrossFilter\Default.aspx" />
     <Content Include="CrossFilter\loader.gif" />
-    <Content Include="CrossFilter\moment.js" />
     <Content Include="CrossFilter\PositionsService.js" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

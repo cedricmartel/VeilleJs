@@ -48,7 +48,7 @@
                         </ul>
                     </li>
                     <li class="dropdown" id="menuComposants">
-                        <a href="#menuComposants" class="dropdown-toggle" data-toggle="dropdown">Composants<span class="caret"></span></a>
+                        <a href="#menuComposants" class="dropdown-toggle" data-toggle="dropdown">Components<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/CreneauxManager/Default.aspx">Creneau Manager</a></li>
                             <li><a href="/BatchManager/Default.aspx">Batch Manager</a></li>
@@ -56,9 +56,9 @@
                     </li>
                     
                      <li class="dropdown" id="menuoptim">
-                        <a href="#menuoptim" class="dropdown-toggle" data-toggle="dropdown">Recherche Optimisées<span class="caret"></span></a>
+                        <a href="#menuoptim" class="dropdown-toggle" data-toggle="dropdown">Ext. lib. tests<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/CrossFilter/Default.aspx">Recherche position de service</a></li>
+                            <li><a href="/CrossFilter/Default.aspx">Crossfilter</a></li>
                         </ul>
                     </li>
                 </ul>

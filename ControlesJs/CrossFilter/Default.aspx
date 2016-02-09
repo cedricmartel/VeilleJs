@@ -4,9 +4,7 @@
     <script src="crossfilter.js"></script>
     <script src="PositionsService.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="moment.js"></script>
     <script>
-        //TODO Créer un INPUT pour ajouter un élément dans la liste.
 
         /// création d'un objet crossFilterElements 
         var crossFilterElements = {
@@ -19,114 +17,121 @@
             datesInit: [],
             idPersonnels: []
         };
-
         var outputDiv = null;
-        
-        
-        
-        /// Recherche basé sur le crossFilter
-        function rechercheCF(idPersonnel) {
+
+        /// search basée sur le crossFilter
+        function searchCF(idPersonnel) {
             return crossFilterElements.dimensionP.filter(idPersonnel).top(Infinity);
         }
 
         /// TODO verifier que c'est bon
         // http://stackoverflow.com/questions/10608171/using-crossfilter-to-dynamically-return-results-in-javascript/10660123#10660123
-        
-        function rechercheMultiCF(idPersonnel, date) {
-            crossFilterElements.dimensionD.filter(date.getTime());
+
+        function searchMultiCF(idPersonnel, dTime) {
+            crossFilterElements.dimensionD.filter(dTime);
             return crossFilterElements.dimensionP.filter(idPersonnel).top(Infinity);
         }
 
-        /// Recherche JS native
-        function rechercheJs(idPersonnel) {
-            var resultat = PositionsService.filter(function (e) { return e.p === parseInt(idPersonnel); });
+        /// search JS native
+        function searchJs(idPersonnel) {
+            var resultat = PositionsService.filter(function (e) { return e.p === idPersonnel; });
             return resultat;
         }
 
-        function rechercheMultiJS(idPersonnel, date) {
+        function searchMultiJS(idPersonnel, dTime) {
             var result = [];
             for (var i = 0; i < PositionsService.length; i++) {
-                if (PositionsService[i].p === parseInt(idPersonnel) && PositionsService[i].d.getTime() == date.getTime()) {
+                if (PositionsService[i].p === idPersonnel && PositionsService[i].dTime === dTime) {
                     result.push(PositionsService[i]);
                 }
             }
             return result;
         }
 
-        function multiRecherche(fctRecherche) {
-            var startTime = moment.now();
+        function multisearch(fctsearch) {
+            var startTime = +new Date();
             var nbEl = 0;
             for (var i = 0; i < paramsSearch.idPersonnels.length; i++) {
-                nbEl += fctRecherche(paramsSearch.idPersonnels[i]).length;
+                nbEl += fctsearch(paramsSearch.idPersonnels[i]).length;
             }
-            var elapsedTime = new Date().getTime() - startTime;
-            outputDiv.append("multiRecherche " + fctRecherche.name + "Execution time: " + elapsedTime + " ms (" + nbEl + " items)<br/>");
+            var elapsedTime = +new Date() - startTime;
+            outputDiv.append(fctsearch.name + "Execution time: " + elapsedTime + " ms (" + nbEl + " items)<br/>");
             return elapsedTime;
         }
 
-        function multiRechercheIdDate(fctRecherche) {
-            var startTime = new Date().getTime();
+        function multisearchIdDate(fctsearch) {
+            var startTime = +new Date();
             var nbEl = 0;
             for (var id = 0; id < paramsSearch.idPersonnels.length; id++) {
                 for (var j = 0; j < paramsSearch.datesInit.length; j++) {
-                    nbEl += fctRecherche(paramsSearch.idPersonnels[id], paramsSearch.datesInit[j]).length;
+                    nbEl += fctsearch(paramsSearch.idPersonnels[id], paramsSearch.datesInit[j]).length;
                 }
             }
-            var elapsedTime = (moment.now() - startTime);
-            outputDiv.append("multiRechercheIdDate " + fctRecherche.name + " execution time: " + elapsedTime + " ms (" + nbEl + " items)<br/>");
+            var elapsedTime = +new Date() - startTime;
+            outputDiv.append(fctsearch.name + " execution time: " + elapsedTime + " ms (" + nbEl + " items)<br/>");
             return elapsedTime;
         }
 
         ///Initialisation du crossFilter
         function initCrossFilter() {
             crossFilterElements.list = crossfilter(PositionsService);
-            crossFilterElements.dimensionP = crossFilterElements.list.dimension(function (d) { return d.p; });
-            crossFilterElements.dimensionD = crossFilterElements.list.dimension(function (f) { return f.d; });
+            crossFilterElements.dimensionP = crossFilterElements.list.dimension(function (x) { return x.p; });
+            crossFilterElements.dimensionD = crossFilterElements.list.dimension(function (x) { return x.dTime; });
         }
 
         $(function () {
 
             outputDiv = $("#resultat");
 
-            $("#btnSequentiel").click(function () {
+            $("#btnsearch").click(function () {
+                var dTime = +new Date;
                 initCrossFilter();
-                
-                outputDiv.append("<hr style='height: 1px; width: 90%;' />");
+                var timeCfInit1 = +new Date - dTime;
 
-               var tempsJs = multiRecherche(rechercheJs);
-               var tempsCF =  multiRecherche(rechercheCF);
-                outputDiv.append("<hr style='height: 1px; width: 90%;' />");
-                
-               var tempsJsIdDate = multiRechercheIdDate(rechercheMultiJS);
-               var tempsCFIdDate = multiRechercheIdDate(rechercheMultiCF);
-                outputDiv.append("<hr style='height: 1px; width: 90%;' />");
+                outputDiv.append("crossfilter init time: " + timeCfInit1 + "ms<br/>");
+                outputDiv.append("search 1 filter:<br/>");
+                var tempsJs = multisearch(searchJs);
+                var tempsCf = multisearch(searchCF);
 
+                outputDiv.append("search 2 filters:<br/>");
+                var tempsJsIdDate = multisearchIdDate(searchMultiJS);
+                var tempsCfIdDate = multisearchIdDate(searchMultiCF);
+
+                outputDiv.append("update data<br/>");
+                // increment date field, result length must decrease
                 for (var idx = 0; idx < PositionsService.length; idx++) {
                     var ps = PositionsService[idx];
-                    ps.d.setDate(ps.d.getDate() + 1);               
+                    ps.d.setDate(ps.d.getDate() + 1);
+                    ps.dTime = ps.d.getTime();
                 }
-                var tempsJsIdDateModif = multiRechercheIdDate(rechercheMultiJS);
-                var tempsCFIdDateModif = multiRechercheIdDate(rechercheMultiCF);
 
-                outputDiv.append("<hr style='height: 1px; width: 90%;' />");
-                // total js = N ms - totla cf = M ms
+                dTime = +new Date;
+                initCrossFilter();
+                var timeCfInit2 = +new Date - dTime;
+
+                outputDiv.append("crossfilter init time: " + timeCfInit2 + "ms<br/>");
+                outputDiv.append("search 2 filters:<br/>");
+                var tempsJsIdDateModif = multisearchIdDate(searchMultiJS);
+                var tempsCfIdDateModif = multisearchIdDate(searchMultiCF);
+
+                // stats
                 var totalJs = tempsJs + tempsJsIdDate + tempsJsIdDateModif;
-                var totalCF = tempsCF + tempsCFIdDate + tempsCFIdDateModif;
-                var diff = totalJs - totalCF;
-                outputDiv.append("La différence de temps est de: " + " " + diff + " " + "(" + "total js =" + totalJs + "ms" + " " + "-" + " " + "total cf =" + totalCF + "ms" + ")");
-                
+                var totalCf = tempsCf + tempsCfIdDate + tempsCfIdDateModif + timeCfInit1 + timeCfInit2;
+                var diff = totalCf - totalJs;
+                var pctDiff = parseInt(totalJs / totalCf * 100);
+
+                outputDiv.append("Time diff " + diff + "ms = " + pctDiff + "% (js " + totalJs + "ms / crossfilter " + totalCf + "ms)");
+                outputDiv.append("<hr style='height: 1px; width: 90%;' />");
                 return false;
             });
-            
 
             //chargement dates dates init
             for (var z = 0; z < PositionsService.length; z++) {
                 PositionsService[z].d = new Date(PositionsService[z].d);
                 var dateInit = PositionsService[z].d;
                 if (paramsSearch.datesInit.length < 50 && $.inArray(dateInit, paramsSearch.datesInit) < 0)
-                    paramsSearch.datesInit.push(new Date(dateInit.getTime()));
+                    paramsSearch.datesInit.push(dateInit.getTime());
             }
-
 
             // chargemnt des idPersonnels
             for (var i = 0; i < PositionsService.length; i++) {
@@ -135,37 +140,17 @@
                     paramsSearch.idPersonnels.push(p);
             }
 
-            // initialisation dimensions crossFilter
-            initCrossFilter();
-
         });
     </script>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="PageContent" runat="server">
-
     <p>
-        Ce controle permet de recherher une position à partir d'une liste de positions de services<br />
-        L'objectifs étant de pouvoir évaluer le temps de recherche !!!
+        This page compares search times using <a href="https://github.com/square/crossfilter">cross filter lib</a> and traditional js .filter method
     </p>
 
-    <hr />
-
-    <div id="MultiRechercheIdDate">
-        <table style="width: 100%">
-            <tr>
-                <td colspan="2" style="text-align: center">
-                    <hr />
-                    <p>
-                        <button class="btn btn-primary" id="btnSequentiel">Rechercher</button>
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: center">
-                    <div id="resultat"></div>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <button class="btn btn-primary btn-xs" id="btnsearch">Start test</button>
+    <p>
+        <div id="resultat"></div>
+    </p>
 </asp:Content>
